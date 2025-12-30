@@ -241,9 +241,9 @@ export async function updateTicket(id: string, data: z.infer<typeof UpdateTicket
     `)
     .single()
 
-  if (error) {
+  if (error || !ticket) {
     console.error('Error updating ticket:', error)
-    return { success: false, error: error.message }
+    return { success: false, error: error?.message || 'Failed to update ticket' }
   }
 
   // Log activity if status changed
@@ -359,7 +359,7 @@ export async function createTicketComment(data: z.infer<typeof CreateCommentSche
       ? ticket.created_by_user[0]
       : ticket?.created_by_user
 
-    if (createdByUser?.email) {
+    if (ticket && createdByUser?.email) {
       try {
         const { sendTicketCommentEmail } = await import('@/lib/email/send')
         await sendTicketCommentEmail(
