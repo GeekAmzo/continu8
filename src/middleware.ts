@@ -1,7 +1,7 @@
 import { type NextRequest } from 'next/server'
 import { updateSession } from '@/lib/supabase/middleware'
-import { createClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
+import { createServerClient } from '@supabase/ssr'
 
 export async function middleware(request: NextRequest) {
   // Update session (refresh auth token if needed)
@@ -9,9 +9,24 @@ export async function middleware(request: NextRequest) {
 
   const { pathname } = request.nextUrl
 
+  // Create Supabase client for middleware context
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return request.cookies.getAll()
+        },
+        setAll(cookiesToSet: { name: string; value: string; options?: any }[]) {
+          // Cookies are already handled by updateSession
+        },
+      },
+    }
+  )
+
   // Protected routes for dashboard (team members only)
   if (pathname.startsWith('/dashboard')) {
-    const supabase = await createClient()
     const {
       data: { session },
     } = await supabase.auth.getSession()
@@ -38,7 +53,6 @@ export async function middleware(request: NextRequest) {
 
   // Protected routes for client portal (clients only)
   if (pathname.startsWith('/portal')) {
-    const supabase = await createClient()
     const {
       data: { session },
     } = await supabase.auth.getSession()
