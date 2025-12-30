@@ -56,10 +56,15 @@ export async function sendTicketCreatedEmails(ticket: {
   )
   const { default: TicketCreatedTeamEmail } = await import('./templates/ticket-created-team')
 
+  // Handle Supabase foreign key array type
+  const createdByUser = Array.isArray(ticket.created_by_user)
+    ? ticket.created_by_user[0]
+    : ticket.created_by_user
+
   // Send email to client
-  if (ticket.created_by_user?.email) {
+  if (createdByUser?.email) {
     await sendEmail({
-      to: ticket.created_by_user.email,
+      to: createdByUser.email,
       subject: `Support Ticket Created - ${ticket.ticket_number}`,
       react: TicketCreatedClientEmail({
         ticketNumber: ticket.ticket_number,
@@ -67,7 +72,7 @@ export async function sendTicketCreatedEmails(ticket: {
         description: ticket.description,
         priority: ticket.priority,
         ticketUrl,
-        clientName: ticket.created_by_user.full_name,
+        clientName: createdByUser.full_name,
       }),
     })
   }

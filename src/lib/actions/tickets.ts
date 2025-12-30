@@ -257,7 +257,11 @@ export async function updateTicket(id: string, data: z.infer<typeof UpdateTicket
     })
 
     // Send email notification to client
-    if (ticket.created_by_user?.email) {
+    const createdByUser = Array.isArray(ticket.created_by_user)
+      ? ticket.created_by_user[0]
+      : ticket.created_by_user
+
+    if (createdByUser?.email) {
       try {
         const { sendTicketStatusUpdateEmail } = await import('@/lib/email/send')
         await sendTicketStatusUpdateEmail(
@@ -267,8 +271,8 @@ export async function updateTicket(id: string, data: z.infer<typeof UpdateTicket
             subject: ticket.subject,
             status: ticket.status,
           },
-          ticket.created_by_user.email,
-          ticket.created_by_user.full_name
+          createdByUser.email,
+          createdByUser.full_name
         )
       } catch (emailError) {
         console.error('Error sending status update email:', emailError)
@@ -351,7 +355,11 @@ export async function createTicketComment(data: z.infer<typeof CreateCommentSche
       .eq('id', validated.ticket_id)
       .single()
 
-    if (ticket?.created_by_user?.email) {
+    const createdByUser = Array.isArray(ticket?.created_by_user)
+      ? ticket.created_by_user[0]
+      : ticket?.created_by_user
+
+    if (createdByUser?.email) {
       try {
         const { sendTicketCommentEmail } = await import('@/lib/email/send')
         await sendTicketCommentEmail(
@@ -364,8 +372,8 @@ export async function createTicketComment(data: z.infer<typeof CreateCommentSche
             content: comment.content,
             author: comment.author,
           },
-          ticket.created_by_user.email,
-          ticket.created_by_user.full_name
+          createdByUser.email,
+          createdByUser.full_name
         )
       } catch (emailError) {
         console.error('Error sending comment email:', emailError)
