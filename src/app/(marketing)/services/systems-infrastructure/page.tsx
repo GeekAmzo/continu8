@@ -3,6 +3,7 @@ import { FeatureGrid } from '@/components/marketing/feature-grid'
 import { CtaSection } from '@/components/marketing/cta-section'
 import { AnimatedSection } from '@/components/shared/animated-section'
 import { GlassPanel } from '@/components/shared/glass-panel'
+import { Shield } from 'lucide-react'
 
 export const metadata = {
   title: 'Business Systems & Infrastructure | Continu8',
