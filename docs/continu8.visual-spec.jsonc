@@ -1,0 +1,225 @@
+{
+    // ===============================
+    // GLOBAL DESIGN SYSTEM
+    // ===============================
+    "designSystem": {
+      "philosophy": "Minimal, calm, confident, premium",
+      "inspiration": ["Apple", "Linear", "Vercel", "Stripe"],
+      "borderRadius": {
+        "xs": "6px",
+        "sm": "10px",
+        "md": "14px",
+        "lg": "20px",
+        "xl": "28px"
+      },
+      "shadows": {
+        "soft": "0 8px 30px rgba(0,0,0,0.04)",
+        "medium": "0 12px 40px rgba(0,0,0,0.08)",
+        "hover": "0 20px 60px rgba(0,0,0,0.12)"
+      },
+      "animation": {
+        "defaultEasing": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "defaultDurationMs": 450,
+        "microInteractionMs": 180
+      }
+    },
+  
+    // ===============================
+    // COLOR SYSTEM
+    // ===============================
+    "colors": {
+      "mode": "dark-first",
+      "background": {
+        "primary": "#0A0A0A",
+        "secondary": "#111111",
+        "elevated": "#161616"
+      },
+      "text": {
+        "primary": "#FAFAFA",
+        "secondary": "#B5B5B5",
+        "muted": "#7A7A7A"
+      },
+      "accent": {
+        "primary": "#4F46E5", // Indigo (trust + intelligence)
+        "secondary": "#22D3EE", // Cyan (automation)
+        "success": "#22C55E",
+        "warning": "#F59E0B"
+      },
+      "borders": {
+        "default": "rgba(255,255,255,0.06)",
+        "hover": "rgba(255,255,255,0.12)"
+      }
+    },
+  
+    // ===============================
+    // TYPOGRAPHY
+    // ===============================
+    "typography": {
+      "fontFamily": "Inter, system-ui, sans-serif",
+      "headings": {
+        "h1": {
+          "size": "clamp(40px, 6vw, 64px)",
+          "weight": 600,
+          "tracking": "-0.03em"
+        },
+        "h2": {
+          "size": "clamp(32px, 4vw, 48px)",
+          "weight": 600
+        },
+        "h3": {
+          "size": "28px",
+          "weight": 500
+        }
+      },
+      "body": {
+        "base": "18px",
+        "lineHeight": 1.6
+      }
+    },
+  
+    // ===============================
+    // CORE COMPONENT STACK
+    // ===============================
+    "components": {
+      "uiLibrary": "shadcn/ui",
+      "animationLibrary": "framer-motion",
+      "icons": "lucide-react",
+      "charts": "recharts",
+      "forms": "react-hook-form + zod",
+      "state": "zustand",
+      "themes": "next-themes"
+    },
+  
+    // ===============================
+    // PAGE STRUCTURE
+    // ===============================
+    "pages": {
+      "home": {
+        "hero": {
+          "component": "HeroSection",
+          "animation": {
+            "type": "fade-up",
+            "staggerChildren": true
+          },
+          "elements": [
+            "Headline",
+            "Subheadline",
+            "PrimaryCTA",
+            "SecondaryCTA"
+          ]
+        },
+        "problemSection": {
+          "component": "FeatureGrid",
+          "style": "glass",
+          "cards": 3
+        },
+        "servicesPreview": {
+          "component": "HoverCards",
+          "hoverEffect": "lift + glow"
+        },
+        "qualificationBlock": {
+          "component": "CalloutBox",
+          "variant": "bordered"
+        }
+      },
+  
+      "services": {
+        "layout": "split",
+        "components": [
+          "StickySideNav",
+          "AnimatedSection",
+          "IconFeatureList"
+        ]
+      },
+  
+      "pricing": {
+        "component": "PricingCards",
+        "style": "premium",
+        "interaction": {
+          "hover": "scale + shadow",
+          "recommendedGlow": true
+        }
+      },
+  
+      "strategyCall": {
+        "component": "MultiStepForm",
+        "validation": "zod",
+        "progressIndicator": true
+      }
+    },
+  
+    // ===============================
+    // KEY CUSTOM COMPONENTS
+    // ===============================
+    "customComponents": {
+      "PricingCard": {
+        "base": "Card",
+        "variants": ["standard", "highlighted"],
+        "animation": "hover-float"
+      },
+      "GlassPanel": {
+        "effect": "backdrop-blur",
+        "opacity": 0.7,
+        "border": true
+      },
+      "AnimatedDivider": {
+        "type": "gradient-line",
+        "motion": "left-to-right"
+      },
+      "MetricCounter": {
+        "animation": "count-up-on-visible"
+      }
+    },
+  
+    // ===============================
+    // MICROINTERACTIONS
+    // ===============================
+    "interactions": {
+      "buttons": {
+        "hover": "slight-scale",
+        "tap": "compress",
+        "focus": "glow-ring"
+      },
+      "cards": {
+        "hover": "lift + border-highlight"
+      },
+      "links": {
+        "hover": "underline-slide"
+      }
+    },
+  
+    // ===============================
+    // PERFORMANCE & QUALITY
+    // ===============================
+    "performance": {
+      "lazyLoad": true,
+      "imageOptimization": "next/image",
+      "motionPreferenceRespect": true
+    },
+  
+    // ===============================
+    // BACKEND & INFRA
+    // ===============================
+    "backend": {
+      "runtime": "nodejs",
+      "api": "nextjs-app-router",
+      "forms": {
+        "handler": "server-actions",
+        "storage": "postgres"
+      },
+      "crmIntegration": "optional",
+      "email": "resend"
+    },
+  
+    // ===============================
+    // NON-GOALS
+    // ===============================
+    "explicitlyAvoid": [
+      "stock imagery",
+      "marketing fluff",
+      "over-animation",
+      "bright gradients",
+      "generic SaaS layouts"
+    ]
+  }
+  
