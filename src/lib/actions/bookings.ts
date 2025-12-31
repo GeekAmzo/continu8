@@ -74,6 +74,11 @@ export async function submitBooking(data: Lead) {
     // Validate data
     const validated = leadSchema.parse(data)
 
+    // Check environment variables
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+      throw new Error('Missing required environment variables: NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY')
+    }
+
     // Use admin client to bypass RLS for public form submissions
     const supabase = createAdminClient()
 
@@ -97,60 +102,66 @@ export async function submitBooking(data: Lead) {
       qualificationNotes.push('Budget below R60k/month')
     }
 
+    // Prepare lead data
+    const leadData = {
+      // Contact info
+      first_name: validated.firstName,
+      last_name: validated.lastName,
+      contact_name: `${validated.firstName} ${validated.lastName}`,
+      email: validated.email,
+      contact_email: validated.email,
+      phone: validated.phone,
+      contact_phone: validated.phone,
+      job_title: validated.jobTitle,
+
+      // Company info
+      company_name: validated.companyName,
+      website: validated.website || null,
+      industry: validated.industry,
+      annual_revenue_range: validated.annualRevenue,
+      employee_count_range: validated.employeeCount,
+
+      // Challenges and goals
+      primary_challenge: validated.primaryChallenge,
+      other_challenge: validated.otherChallenge || null,
+      specific_pain_points: validated.specificPainPoints,
+      desired_outcomes: validated.desiredOutcomes,
+      timeline: validated.timeline,
+
+      // Budget and decision
+      monthly_budget_range: validated.monthlyBudget,
+      decision_authority: validated.decisionAuthority,
+      decision_timeframe: validated.decisionTimeframe,
+      current_solutions: validated.currentSolutions || null,
+
+      // Scoring
+      lead_score: score,
+      status: status,
+
+      // Qualification tracking
+      meets_ideal_criteria: meetsIdealCriteria,
+      qualification_notes: qualificationNotes.length > 0 ? qualificationNotes.join('; ') : null,
+
+      // Source tracking
+      source: 'website_booking',
+      utm_source: null,
+      utm_medium: null,
+      utm_campaign: null,
+    }
+
+    console.log('Attempting to insert lead:', leadData)
+
     // Create lead record
     const { data: lead, error: leadError } = await supabase
       .from('leads')
-      .insert({
-        // Contact info
-        first_name: validated.firstName,
-        last_name: validated.lastName,
-        contact_name: `${validated.firstName} ${validated.lastName}`,
-        email: validated.email,
-        contact_email: validated.email,
-        phone: validated.phone,
-        contact_phone: validated.phone,
-        job_title: validated.jobTitle,
-
-        // Company info
-        company_name: validated.companyName,
-        website: validated.website || null,
-        industry: validated.industry,
-        annual_revenue_range: validated.annualRevenue,
-        employee_count_range: validated.employeeCount,
-
-        // Challenges and goals
-        primary_challenge: validated.primaryChallenge,
-        other_challenge: validated.otherChallenge || null,
-        specific_pain_points: validated.specificPainPoints,
-        desired_outcomes: validated.desiredOutcomes,
-        timeline: validated.timeline,
-
-        // Budget and decision
-        monthly_budget_range: validated.monthlyBudget,
-        decision_authority: validated.decisionAuthority,
-        decision_timeframe: validated.decisionTimeframe,
-        current_solutions: validated.currentSolutions || null,
-
-        // Scoring
-        lead_score: score,
-        status: status,
-
-        // Qualification tracking
-        meets_ideal_criteria: meetsIdealCriteria,
-        qualification_notes: qualificationNotes.length > 0 ? qualificationNotes.join('; ') : null,
-
-        // Source tracking
-        source: 'website_booking',
-        utm_source: null,
-        utm_medium: null,
-        utm_campaign: null,
-      })
+      .insert(leadData)
       .select()
       .single()
 
     if (leadError) {
       console.error('Error creating lead:', leadError)
-      throw new Error('Failed to create lead')
+      console.error('Lead error details:', JSON.stringify(leadError, null, 2))
+      throw new Error(`Failed to create lead: ${leadError.message || JSON.stringify(leadError)}`)
     }
 
     // Create booking record if preferred date/time provided
