@@ -4,48 +4,48 @@
 
 @layer base {
   :root {
-    /* Deep blue-black / graphite backgrounds */
-    --background: 210 20% 6%; /* #0F1419 - deep blue-black */
-    --foreground: 210 10% 98%; /* #F8F9FA - soft white */
+    /* TRON: Pure black backgrounds */
+    --background: 0 0% 0%; /* #000000 - pure black */
+    --foreground: 0 0% 100%; /* #FFFFFF - pure white */
 
-    /* Cards and panels */
-    --card: 210 20% 8%; /* #131921 */
-    --card-foreground: 210 10% 98%;
+    /* Cards and panels - dark with white glow */
+    --card: 0 0% 3%; /* #080808 - near black */
+    --card-foreground: 0 0% 100%;
 
     /* Popover */
-    --popover: 210 20% 8%;
-    --popover-foreground: 210 10% 98%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 100%;
 
-    /* Intelligent indigo primary */
-    --primary: 239 84% 67%; /* #6366F1 - intelligent indigo */
-    --primary-foreground: 210 10% 98%;
+    /* TRON white primary */
+    --primary: 0 0% 100%; /* #FFFFFF - pure white */
+    --primary-foreground: 0 0% 0%;
 
-    /* Futuristic cyan secondary */
-    --secondary: 189 94% 56%; /* #22D3EE - futuristic cyan */
-    --secondary-foreground: 210 20% 6%;
+    /* TRON white secondary */
+    --secondary: 0 0% 100%; /* #FFFFFF - pure white */
+    --secondary-foreground: 0 0% 0%;
 
-    /* Accent */
-    --accent: 210 20% 12%; /* #1A2332 */
-    --accent-foreground: 210 10% 98%;
+    /* Accent - lighter white */
+    --accent: 0 0% 95%; /* #F2F2F2 - light white */
+    --accent-foreground: 0 0% 0%;
 
     /* Muted */
-    --muted: 210 20% 15%; /* #222A3A */
-    --muted-foreground: 210 10% 65%; /* #9CA3AF */
+    --muted: 0 0% 15%; /* Dark gray tint */
+    --muted-foreground: 0 0% 60%; /* Muted white/gray */
 
-    /* Destructive */
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 10% 98%;
+    /* Destructive - orange accent like Tron */
+    --destructive: 14 100% 60%; /* #FF6B35 - tron orange */
+    --destructive-foreground: 0 0% 100%;
 
-    /* Borders - subtle with slight blue tint */
-    --border: 210 20% 18%; /* rgba(255,255,255,0.08) equivalent */
-    --input: 210 20% 18%;
-    --ring: 239 84% 67%; /* matches primary */
+    /* Borders - white glow */
+    --border: 0 0% 40%; /* White border */
+    --input: 0 0% 35%;
+    --ring: 0 0% 100%; /* White ring */
 
-    /* Radius system - 16-32px */
-    --radius-sm: 0.75rem; /* 12px */
-    --radius: 1rem; /* 16px */
-    --radius-md: 1.5rem; /* 24px */
-    --radius-lg: 2rem; /* 32px */
+    /* Radius system - sharper for Tron aesthetic */
+    --radius-sm: 0.125rem; /* 2px - sharp */
+    --radius: 0.25rem; /* 4px - sharp */
+    --radius-md: 0.375rem; /* 6px - sharp */
+    --radius-lg: 0.5rem; /* 8px - sharp */
   }
 }
 
@@ -57,49 +57,70 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: 'rlig' 1, 'calt' 1;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position: relative;
   }
 
-  /* Typography Scale */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Typography Scale - Tron style with Orbitron */
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
-    letter-spacing: -0.03em;
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider font-orbitron uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.3);
   }
 
   h2 {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
-    letter-spacing: -0.02em;
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-wider font-orbitron uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 16px rgba(255, 255, 255, 0.5), 0 0 24px rgba(255, 255, 255, 0.3);
   }
 
   h3 {
-    @apply text-2xl md:text-3xl font-semibold tracking-tight;
+    @apply text-2xl md:text-3xl font-semibold tracking-wider font-orbitron uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.7), 0 0 12px rgba(255, 255, 255, 0.4);
   }
 
   h4 {
-    @apply text-xl md:text-2xl font-semibold;
+    @apply text-xl md:text-2xl font-semibold font-orbitron uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.7), 0 0 8px rgba(255, 255, 255, 0.4);
   }
 
-  /* Premium glass panel */
+  /* TRON glass panel */
   .glass-panel {
-    @apply rounded-[var(--radius-md)] border border-white/[0.08] bg-white/[0.02] backdrop-blur-xl;
+    @apply rounded-[var(--radius-md)] border bg-black/[0.8] backdrop-blur-sm;
+    border-color: rgba(255, 255, 255, 0.3);
     box-shadow:
-      0 0 0 1px rgba(99, 102, 241, 0.05),
-      0 8px 32px -8px rgba(0, 0, 0, 0.4),
-      inset 0 1px 1px 0 rgba(255, 255, 255, 0.05);
+      0 0 10px rgba(255, 255, 255, 0.3),
+      inset 0 0 20px rgba(255, 255, 255, 0.05);
   }
 
   /* Elevated glass for interactive elements */
   .glass-panel-elevated {
     @apply glass-panel;
+    border-color: rgba(255, 255, 255, 0.5);
     box-shadow:
-      0 0 0 1px rgba(99, 102, 241, 0.1),
-      0 16px 64px -16px rgba(0, 0, 0, 0.5),
-      inset 0 1px 1px 0 rgba(255, 255, 255, 0.08);
+      0 0 20px rgba(255, 255, 255, 0.5),
+      inset 0 0 30px rgba(255, 255, 255, 0.1);
   }
 
-  /* Glow effect for premium interactions */
+  /* Glow effect for Tron interactions */
   .glow-border {
     position: relative;
   }
@@ -111,9 +132,9 @@
     border-radius: inherit;
     padding: 1px;
     background: linear-gradient(135deg,
-      rgba(99, 102, 241, 0.3) 0%,
-      rgba(34, 211, 238, 0.2) 50%,
-      rgba(99, 102, 241, 0.3) 100%
+      rgba(255, 255, 255, 0.6) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0.6) 100%
     );
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -126,12 +147,12 @@
     opacity: 1;
   }
 
-  /* Subtle glow on focus */
+  /* Neon glow on focus */
   .focus-glow:focus-visible {
     outline: none;
     box-shadow:
-      0 0 0 2px rgba(99, 102, 241, 0.2),
-      0 0 24px 0 rgba(99, 102, 241, 0.15);
+      0 0 0 2px rgba(255, 255, 255, 0.5),
+      0 0 30px 0 rgba(255, 255, 255, 0.5);
   }
 }
 
@@ -147,43 +168,43 @@
     transition-duration: 250ms;
   }
 
-  /* Gradients */
+  /* TRON Gradients */
   .gradient-primary {
     background: linear-gradient(135deg,
-      rgba(99, 102, 241, 0.1) 0%,
-      rgba(34, 211, 238, 0.05) 100%
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.08) 100%
     );
   }
 
   .gradient-mesh {
     background-image:
-      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(34, 211, 238, 0.1) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, rgba(34, 211, 238, 0.05) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, rgba(255, 255, 255, 0.2) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(255, 255, 255, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(255, 255, 255, 0.15) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(255, 255, 255, 0.1) 0px, transparent 50%);
   }
 
-  /* Text gradients for emphasis */
+  /* TRON Text gradients */
   .text-gradient-primary {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #6366F1 0%, #22D3EE 100%);
+    background-image: linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 100%);
   }
 
-  /* Grid pattern background */
+  /* TRON Grid pattern background */
   .grid-pattern {
     background-image:
-      linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
-    background-size: 48px 48px;
+      linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
   }
 
-  /* Security-inspired dotted pattern */
+  /* TRON circuit dotted pattern */
   .dot-pattern {
-    background-image: radial-gradient(rgba(99, 102, 241, 0.15) 1px, transparent 1px);
-    background-size: 24px 24px;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+    background-size: 20px 20px;
   }
 
-  /* Animated gradient border */
+  /* Animated neon border */
   @keyframes gradient-shift {
     0%, 100% {
       background-position: 0% 50%;
@@ -195,25 +216,25 @@
 
   .animated-gradient-border {
     background: linear-gradient(90deg,
-      rgba(99, 102, 241, 0.3),
-      rgba(34, 211, 238, 0.3),
-      rgba(99, 102, 241, 0.3)
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.6)
     );
     background-size: 200% 100%;
     animation: gradient-shift 3s ease infinite;
   }
 
-  /* Flow animation for AI visuals */
+  /* Energy flow animation for TRON visuals */
   @keyframes flow {
     0% {
       transform: translateX(-100%);
       opacity: 0;
     }
     10% {
-      opacity: 0.4;
+      opacity: 0.8;
     }
     90% {
-      opacity: 0.4;
+      opacity: 0.8;
     }
     100% {
       transform: translateX(100%);
@@ -225,13 +246,13 @@
     animation: flow 2s ease-in-out infinite;
   }
 
-  /* Pulse glow for active states */
+  /* Neon pulse glow for active states */
   @keyframes pulse-glow {
     0%, 100% {
-      box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
     }
     50% {
-      box-shadow: 0 0 40px rgba(99, 102, 241, 0.4);
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.9);
     }
   }
 
@@ -265,6 +286,78 @@
 
   .animate-delay-300 {
     animation-delay: 300ms;
+  }
+
+  /* TRON circuit board pattern */
+  .circuit-pattern {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .circuit-pattern::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.15) 2px, transparent 2px),
+      radial-gradient(circle at 60% 70%, rgba(255, 255, 255, 0.15) 2px, transparent 2px),
+      radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.15) 2px, transparent 2px);
+    background-size: 50px 50px, 50px 50px, 100px 100px, 100px 100px, 100px 100px;
+    background-position: 0 0, 0 0, 0 0, 25px 25px, 50px 50px;
+    pointer-events: none;
+  }
+
+  /* TRON neon text effect */
+  .neon-text {
+    text-shadow:
+      0 0 5px rgba(255, 255, 255, 0.9),
+      0 0 10px rgba(255, 255, 255, 0.7),
+      0 0 20px rgba(255, 255, 255, 0.5),
+      0 0 40px rgba(255, 255, 255, 0.3);
+  }
+
+  /* TRON neon border */
+  .neon-border {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow:
+      0 0 5px rgba(255, 255, 255, 0.5),
+      inset 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+
+  /* TRON hexagon pattern */
+  .hexagon-pattern {
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0px, transparent 1px, transparent 40px, rgba(255, 255, 255, 0.05) 41px),
+      repeating-linear-gradient(60deg, rgba(255, 255, 255, 0.05) 0px, transparent 1px, transparent 40px, rgba(255, 255, 255, 0.05) 41px),
+      repeating-linear-gradient(120deg, rgba(255, 255, 255, 0.05) 0px, transparent 1px, transparent 40px, rgba(255, 255, 255, 0.05) 41px);
+  }
+
+  /* Scanline effect */
+  @keyframes scanline {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100vh);
+    }
+  }
+
+  .scanline {
+    position: relative;
+  }
+
+  .scanline::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.6), transparent);
+    animation: scanline 4s linear infinite;
+    pointer-events: none;
   }
 
   /* Reduce motion for accessibility */

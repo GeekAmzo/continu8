@@ -17,13 +17,13 @@ export function Header() {
   ]
 
   return (
-    <header className="fixed top-0 w-full z-50 border-b border-white/[0.06] bg-background/80 backdrop-blur-xl">
+    <header className="fixed top-0 w-full z-50 border-b-2 border-white/30 bg-black/95 backdrop-blur-xl shadow-[0_0_20px_rgba(255,255,255,0.3)]">
       <nav className="mx-auto max-w-7xl px-6 lg:px-8" aria-label="Global">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex lg:flex-1">
-            <Link href="/" className="-m-1.5 p-1.5">
-              <span className="text-xl font-semibold">Continu8</span>
+            <Link href="/" className="-m-1.5 p-1.5 group">
+              <span className="text-2xl font-orbitron font-bold uppercase tracking-wider text-white neon-text group-hover:text-white/80 transition-colors duration-300">Continu8</span>
             </Link>
           </div>
 
@@ -49,7 +49,7 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm font-orbitron uppercase tracking-wider text-white/70 hover:text-white hover:neon-text transition-all duration-300"
               >
                 {item.name}
               </Link>
@@ -79,7 +79,7 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="block rounded-lg px-3 py-2 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-white/[0.02] transition-colors"
+                className="block px-3 py-2 text-base font-orbitron uppercase tracking-wider text-white/70 hover:text-white hover:bg-white/10 border border-transparent hover:border-white/30 transition-all duration-300"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.name}

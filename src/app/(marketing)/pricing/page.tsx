@@ -83,23 +83,23 @@ export default function PricingPage() {
       <section className="px-6 py-16 lg:px-8">
         <div className="mx-auto max-w-5xl">
           <AnimatedSection>
-            <GlassPanel className="border-primary/20">
+            <GlassPanel>
               <div className="grid gap-8 md:grid-cols-3">
-                <div>
-                  <h3 className="mb-3 text-lg font-semibold">Outcome-Based</h3>
-                  <p className="text-sm text-muted-foreground">
+                <div className="border-l-2 border-white/40 pl-4">
+                  <h3 className="mb-3 text-base font-orbitron uppercase tracking-wider text-white">Outcome-Based</h3>
+                  <p className="text-sm text-white/70 font-sans">
                     We charge for results and value delivered, not hours worked.
                   </p>
                 </div>
-                <div>
-                  <h3 className="mb-3 text-lg font-semibold">Retainer-Focused</h3>
-                  <p className="text-sm text-muted-foreground">
+                <div className="border-l-2 border-white/40 pl-4">
+                  <h3 className="mb-3 text-base font-orbitron uppercase tracking-wider text-white">Retainer-Focused</h3>
+                  <p className="text-sm text-white/70 font-sans">
                     Monthly retainers ensure continuous improvement, not one-off projects.
                   </p>
                 </div>
-                <div>
-                  <h3 className="mb-3 text-lg font-semibold">No Hourly Billing</h3>
-                  <p className="text-sm text-muted-foreground">
+                <div className="border-l-2 border-white/40 pl-4">
+                  <h3 className="mb-3 text-base font-orbitron uppercase tracking-wider text-white">No Hourly Billing</h3>
+                  <p className="text-sm text-white/70 font-sans">
                     Predictable monthly investment with unlimited strategic value.
                   </p>
                 </div>
@@ -128,7 +128,7 @@ export default function PricingPage() {
           <AnimatedSection>
             <div className="mb-12 text-center">
               <h2 className="mb-4">What's Always Included</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-lg text-white/70 font-sans max-w-2xl mx-auto">
                 Every engagement includes these core elements
               </p>
             </div>
@@ -164,8 +164,8 @@ export default function PricingPage() {
             ].map((item, index) => (
               <AnimatedSection key={item.title} delay={index * 0.1}>
                 <GlassPanel className="h-full">
-                  <h3 className="mb-2 text-lg font-semibold">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
+                  <h3 className="mb-2 text-base font-orbitron uppercase tracking-wider text-white">{item.title}</h3>
+                  <p className="text-sm text-white/70 font-sans">{item.description}</p>
                 </GlassPanel>
               </AnimatedSection>
             ))}
@@ -178,25 +178,25 @@ export default function PricingPage() {
         <div className="mx-auto max-w-5xl">
           <AnimatedSection>
             <GlassPanel>
-              <h3 className="mb-4 text-xl font-semibold">Pricing Notes</h3>
-              <div className="space-y-4 text-muted-foreground">
+              <h3 className="mb-6 text-lg font-orbitron uppercase tracking-wider text-white">Pricing Notes</h3>
+              <div className="space-y-4 text-white/70 font-sans">
                 <p>
-                  <strong className="text-foreground">Why ranges?</strong> Every business is
+                  <strong className="text-white">Why ranges?</strong> Every business is
                   different. Pricing depends on complexity, scale, and current state of your
                   systems. We'll give you exact pricing after our initial strategy call.
                 </p>
                 <p>
-                  <strong className="text-foreground">What if I'm not sure which tier?</strong> Book
+                  <strong className="text-white">What if I'm not sure which tier?</strong> Book
                   a strategy call. We'll assess your needs and recommend the right approach. No
                   obligation.
                 </p>
                 <p>
-                  <strong className="text-foreground">Can I start with an audit?</strong> Yes. Many
+                  <strong className="text-white">Can I start with an audit?</strong> Yes. Many
                   clients start with a paid audit to understand the opportunity, then move to a
                   retainer.
                 </p>
                 <p>
-                  <strong className="text-foreground">Minimum commitment?</strong> Typically 6
+                  <strong className="text-white">Minimum commitment?</strong> Typically 6
                   months for retainers. This ensures we can deliver real, compounding value rather
                   than quick fixes.
                 </p>
@@ -211,13 +211,13 @@ export default function PricingPage() {
         <div className="mx-auto max-w-4xl text-center">
           <AnimatedSection>
             <h2 className="mb-4">Ready to get started?</h2>
-            <p className="mb-8 text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="mb-8 text-lg text-white/70 font-sans max-w-2xl mx-auto">
               Book a strategy call to discuss your challenges, explore fit, and get exact pricing
               for your situation.
             </p>
             <a
               href="/book-call"
-              className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-4 text-lg font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+              className="inline-flex items-center justify-center border-2 border-white bg-white text-black px-8 py-4 text-base font-orbitron uppercase tracking-wider font-semibold hover:bg-white/90 shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all duration-300"
             >
               Book a Strategy Call
             </a>
