@@ -27,7 +27,7 @@ export function PricingCard({
   period = '/month',
   features,
   recommended = false,
-  cta = { text: 'Book a Call', href: '/book-call' },
+  cta = { text: 'Contact Us', href: 'mailto:amrish@geek247.co.za' },
   badge,
 }: PricingCardProps) {
   return (

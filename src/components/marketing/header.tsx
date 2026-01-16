@@ -62,7 +62,7 @@ export function Header() {
               <Link href="/login">Sign in</Link>
             </Button>
             <Button asChild>
-              <Link href="/book-call">Book a Call</Link>
+              <a href="mailto:amrish@geek247.co.za">Contact Us</a>
             </Button>
           </div>
         </div>
@@ -92,9 +92,9 @@ export function Header() {
                 </Link>
               </Button>
               <Button className="w-full" asChild>
-                <Link href="/book-call" onClick={() => setMobileMenuOpen(false)}>
-                  Book a Call
-                </Link>
+                <a href="mailto:amrish@geek247.co.za" onClick={() => setMobileMenuOpen(false)}>
+                  Contact Us
+                </a>
               </Button>
             </div>
           </div>

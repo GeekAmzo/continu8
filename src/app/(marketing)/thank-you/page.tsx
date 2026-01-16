@@ -82,7 +82,7 @@ export default function ThankYouPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button variant="outline" asChild>
-                  <a href="mailto:hello@continu8.co.za">
+                  <a href="mailto:amrish@geek247.co.za">
                     <Mail className="mr-2 h-4 w-4" />
                     Email Us
                   </a>

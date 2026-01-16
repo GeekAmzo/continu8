@@ -81,12 +81,12 @@ export default function LoginPage() {
 
           <div className="mt-6 text-center text-sm text-muted-foreground">
             Need access?{' '}
-            <Link
-              href="/book-call"
+            <a
+              href="mailto:amrish@geek247.co.za"
               className="text-foreground hover:text-primary transition-colors"
             >
-              Book a strategy call
-            </Link>
+              Contact us
+            </a>
           </div>
         </CardContent>
       </Card>

@@ -24,7 +24,7 @@ interface HeroSectionProps {
 export function HeroSection({
   title,
   subtitle,
-  primaryCta = { text: 'Book a Strategy Call', href: '/book-call' },
+  primaryCta = { text: 'Get in Touch', href: 'mailto:amrish@geek247.co.za' },
   secondaryCta,
   showVisualization = false,
 }: HeroSectionProps) {

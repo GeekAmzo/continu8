@@ -21,7 +21,7 @@ export default function NotFound() {
               <Link href="/">Go home</Link>
             </Button>
             <Button variant="outline" asChild>
-              <Link href="/book-call">Book a call</Link>
+              <a href="mailto:amrish@geek247.co.za">Contact us</a>
             </Button>
           </div>
         </CardContent>

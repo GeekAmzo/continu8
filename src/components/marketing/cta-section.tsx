@@ -21,7 +21,7 @@ interface CtaSectionProps {
 export function CtaSection({
   title,
   description,
-  primaryCta = { text: 'Book a Strategy Call', href: '/book-call' },
+  primaryCta = { text: 'Get in Touch', href: 'mailto:amrish@geek247.co.za' },
   secondaryCta,
 }: CtaSectionProps) {
   return (

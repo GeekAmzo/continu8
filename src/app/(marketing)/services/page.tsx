@@ -60,7 +60,7 @@ export default function ServicesPage() {
       <HeroSection
         title="Services Built for Scale"
         subtitle="Three integrated service areas that work together to transform your operations, eliminate waste, and drive continuous improvement."
-        primaryCta={{ text: 'Book a Strategy Call', href: '/book-call' }}
+        primaryCta={{ text: 'Get in Touch', href: 'mailto:amrish@geek247.co.za' }}
         secondaryCta={{ text: 'View Pricing', href: '/pricing' }}
       />
 

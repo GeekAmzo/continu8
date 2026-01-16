@@ -28,8 +28,8 @@ export default function PricingPage() {
         'Quarterly business review',
       ],
       cta: {
-        text: 'Book a Strategy Call',
-        href: '/book-call',
+        text: 'Get in Touch',
+        href: 'mailto:amrish@geek247.co.za',
       },
     },
     {
@@ -46,8 +46,8 @@ export default function PricingPage() {
         'Monthly optimization sessions',
       ],
       cta: {
-        text: 'Book a Strategy Call',
-        href: '/book-call',
+        text: 'Get in Touch',
+        href: 'mailto:amrish@geek247.co.za',
       },
     },
     {
@@ -65,7 +65,7 @@ export default function PricingPage() {
       ],
       cta: {
         text: 'Request an Audit',
-        href: '/book-call',
+        href: 'mailto:amrish@geek247.co.za',
       },
     },
   ]
@@ -75,7 +75,7 @@ export default function PricingPage() {
       <HeroSection
         title="Clear, Outcome-Based Pricing"
         subtitle="No hourly billing. No project-based pricing. Just predictable monthly investments that deliver compound value over time."
-        primaryCta={{ text: 'Book a Strategy Call', href: '/book-call' }}
+        primaryCta={{ text: 'Get in Touch', href: 'mailto:amrish@geek247.co.za' }}
         secondaryCta={undefined}
       />
 
@@ -216,10 +216,10 @@ export default function PricingPage() {
               for your situation.
             </p>
             <a
-              href="/book-call"
+              href="mailto:amrish@geek247.co.za"
               className="inline-flex items-center justify-center border-2 border-white bg-white text-black px-8 py-4 text-base font-orbitron uppercase tracking-wider font-semibold hover:bg-white/90 shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all duration-300"
             >
-              Book a Strategy Call
+              Get in Touch
             </a>
           </AnimatedSection>
         </div>
