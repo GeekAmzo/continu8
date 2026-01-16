@@ -111,8 +111,8 @@ export default function PricingPage() {
 
       {/* Pricing Tiers */}
       <section className="px-6 py-16 sm:py-24 lg:px-8 bg-white/[0.01]">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-8 lg:grid-cols-3">
+        <div className="mx-auto max-w-4xl">
+          <div className="flex flex-col gap-8">
             {pricingTiers.map((tier, index) => (
               <AnimatedSection key={tier.name} delay={index * 0.15}>
                 <PricingCard {...tier} />
